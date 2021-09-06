@@ -13,8 +13,9 @@ const Navbar = () => {
         <NavLink to="/saved">Your Books</NavLink>
       </div>
       <div className={classes.logo}>
-        <img src={logoImage} alt="cat silhouette" />
-        <h1>Catalogue</h1>
+        <img src={logoImage} alt="c/at silhouette" />
+        {/* <img src='https://i.pinimg.com/564x/82/ce/81/82ce81fecd6bda8a36407abaa5bc194e.jpg' alt="cat silhouette" /> */}
+        <h3>Catalogue</h3>
       </div>
       {/* Remember to use authCtx to pass Username into login component */}
       <Login />

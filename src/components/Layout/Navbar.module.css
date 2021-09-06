@@ -4,9 +4,9 @@
    position: fixed;
    width: 100%; 
    align-items: center;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   border-bottom: 1px solid black;
+   padding-top: 15px;
+   padding-bottom: 15px;
+   border-bottom: 1px solid #999999;
    /* font-size: 24px */
 }
 
@@ -37,6 +37,6 @@
 }
 
 .logo img {
-   height: 45px; 
+   height: 39px; 
    margin-right: 10px;
 }

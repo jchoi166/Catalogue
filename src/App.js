@@ -1,19 +1,29 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
-
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 import Layout from './components/Layout/Layout'
 import Explore from './components/Pages/Explore'
-import Homepage from './components/Pages/Homepage'
 import Saved from './components/Pages/Saved'
 import Search from './components/Pages/Search'
 
 
+import { fetchArticleData } from './store/explore-slice'
+
+
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchArticleData());
+  }, [dispatch]);
+
   return (
     <Layout>
         <Switch>
           <Route path='/' exact>
-            <Homepage />
+            <Explore />
           </Route>
           <Route path='/saved'>
             <Saved />
@@ -21,9 +31,9 @@ function App() {
           <Route path='/search'>
             <Search />
           </Route>
-          <Route path='/explore'>
+          {/* <Route path='/explore'>
             <Explore />
-          </Route>
+          </Route> */}
           <Route path="*">
             <Redirect to="/" />
           </Route>

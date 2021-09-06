@@ -1,27 +1,40 @@
-
 :root {
-  --font-header: 'Cormorant Garamond', serif;
-  --font-text: 'Raleway', sans-serif
+  --font-header: "Cormorant Garamond", serif;
+  --font-text: "Raleway", sans-serif;
 }
 
-
-
-* {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 body {
-  margin: 0;
-  /* background-color: #3f3f3f; */
+  box-sizing: border-box;
   font-family: var(--font-text);
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-header);
+}
+
+
+/* Utility Classes */
 
 .container {
   padding: 0 5%;
 }
 
-
+.mainHeader {
+  font-size: 45px;
+  font-style: italic; 
+}

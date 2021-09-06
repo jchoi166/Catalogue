@@ -2,19 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const exploreSlice = createSlice({
   name: "explore",
-  initialState: { articles: [] },
+  initialState: { articles: [], isLoaded: false },
   reducers: {
-    replaceArticles(state, action) {
+    loadArticles(state, action) {
       state.articles = action.payload;
+      state.isLoaded = true
     },
   },
 });
 
 export const fetchArticleData = () => {
-  console.log("i am running!");
-
   return async (dispatch) => {
-   console.log('the dispatch function is running!')
 
     const fetchData = async () => {
       const response = await fetch(
@@ -24,16 +22,13 @@ export const fetchArticleData = () => {
       if (!response.ok) throw new Error("Could not fetch article data");
 
       const data = await response.json();
-      // console.log(data.response.docs);
-      // console.log(data)
+
       return data.response.docs;
     };
 
     try {
       const articleData = await fetchData();
-      dispatch(
-        exploreActions.replaceArticles(articleData)
-      );
+      dispatch(exploreActions.loadArticles(articleData));
     } catch (error) {
       console.log(error);
     }
