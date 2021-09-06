@@ -1,0 +1,15 @@
+
+.grid {
+   display: grid; 
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+}
+
+.block1 {
+   grid-column: 1 / 3;
+   grid-row: 1 / 3;
+}
+
+.block2 {
+   grid-row: 1 / 3;
+}
