@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./Explore.module.css";
 
-import ExploreCard from "../UI/ExploreCard";
-import ExploreGrid from "../UI/ExploreGrid";
+import ExploreCard from "../UI/Explore/ExploreCard";
+import ExploreGrid from "../UI/Explore/ExploreGrid";
 
 const Explore = () => {
   const dispatch = useDispatch();

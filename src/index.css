@@ -1,6 +1,7 @@
 :root {
-  --font-header: "Cormorant Garamond", serif;
+  --font-header: "EB Garamond", serif;
   --font-text: "Raleway", sans-serif;
+  --border-color: 1px solid #cecece;
 }
 
 *,
@@ -31,10 +32,10 @@ h4 {
 /* Utility Classes */
 
 .container {
-  padding: 0 5%;
+  padding: 0 8%;
 }
 
 .mainHeader {
-  font-size: 45px;
+  font-size: 50px;
   font-style: italic; 
 }

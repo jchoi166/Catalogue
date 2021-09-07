@@ -9,7 +9,7 @@ const ExploreCard = (props) => {
    return (
       <div className={classes.card}>
          <img src={imgPrefix + img}></img>
-         <h3>{article.headline.main}</h3>
+         <h1>{article.headline.main}</h1>
          <p>{article.abstract}</p>
          {/* time and author */}
          <p>{article.byline.original}</p>
