@@ -1,0 +1,51 @@
+.inputForm {
+    width: 100%;
+    padding: 15px 0; 
+}
+
+
+.inputContainer {
+    height: 50px;
+    padding: 5px 30px;
+    border-radius: 5px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.inputContainer input {
+    border: none;
+    background-color: inherit;
+    /* padding: 5px;  */
+    color: inherit; 
+    margin-left: 10px;
+    width: 100%; 
+    font-size: 20px; 
+    font-weight: 500; 
+    font-family: inherit;
+    border-bottom: 1px solid transparent;
+    /* transition: border-bottom .1s; */
+}
+
+.inputContainer input:focus {
+    outline: none;
+    border-bottom: 1px solid #ababab;
+}
+
+.inputContainer input:hover {
+    border-bottom: 1px solid #ababab;
+}
+
+.inputContainer input::placeholder {
+    font-family: inherit;
+    color: #ababab; 
+    font-weight: 400; 
+}
+
+.searchIcon {
+    color: grey;
+}
+
+.searchIcon:hover {
+    cursor: pointer; 
+}

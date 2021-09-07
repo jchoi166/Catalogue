@@ -16,14 +16,15 @@ export const searchByQuery = (query) => {
 
     const fetchData = async () => {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=harry+potter&callback=handleResponse`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}`
       );
 
-      if (!response.ok) throw new Error("Could not fetch article data");
+      if (!response.ok) throw new Error("Could not fetch books by that search!");
 
       const data = await response.json();
 
-      return data.response.docs;
+      // return data;
+      console.log(data)
     };
 
     try {
