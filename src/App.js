@@ -31,9 +31,9 @@ function App() {
           <Route path='/search'>
             <Search />
           </Route>
-          {/* <Route path='/explore'>
+          <Route path='/explore'>
             <Explore />
-          </Route> */}
+          </Route>
           <Route path="*">
             <Redirect to="/" />
           </Route>

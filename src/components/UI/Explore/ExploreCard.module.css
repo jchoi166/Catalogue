@@ -20,3 +20,8 @@
    line-height: 20px;
    margin: 10px 0;
 }
+
+.card .abstract {
+   font-style: italic;
+   font-size: 13px; 
+}

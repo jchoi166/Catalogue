@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./Explore.module.css";
 
-import ExploreCard from "../UI/Explore/ExploreCard";
 import ExploreGrid from "../UI/Explore/ExploreGrid";
+import PageHeader from "../UI/PageHeader";
 
 const Explore = () => {
   const dispatch = useDispatch();
@@ -13,10 +12,12 @@ const Explore = () => {
 
   return (
     <section className={classes.explore}>
-      <h1 className="mainHeader">Explore</h1>
-      <p>Check out the latests news on upcoming books!</p>
+      <PageHeader title={"Explore"} caption={'Check out our features on upcoming and noteworty books!'} />
       {isLoaded && <ExploreGrid articles={articles}/>}
+
+      <h1>Remember to add a carousel here!</h1>
     </section>
+
   );
 };
 

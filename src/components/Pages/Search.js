@@ -1,6 +1,9 @@
+import PageHeader from "../UI/PageHeader";
 
 const Search = () => {
-   return <div>This is the SEARCH page!</div> 
+   return <section>
+      <PageHeader title={'Search'} caption={'Search for new titles using different filters!'} />
+   </section>
 }
 
 export default Search
