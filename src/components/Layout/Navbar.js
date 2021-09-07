@@ -11,6 +11,7 @@ const Navbar = () => {
       <div className={classes.navLinks}>
         <NavLink to="/search">Find A Book!</NavLink>
         <NavLink to="/saved">Your Books</NavLink>
+        <NavLink to="/explore">Explore</NavLink>
       </div>
       <div className={classes.logo}>
         <img src={logoImage} alt="c/at silhouette" />

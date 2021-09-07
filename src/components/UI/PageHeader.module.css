@@ -1,0 +1,10 @@
+.header {
+   border-bottom: 2px solid black;
+   padding-bottom: 10px;
+}
+
+.header h1 {
+   font-size: 50px;
+   font-style: italic; 
+   padding-bottom: 8px
+}

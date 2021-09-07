@@ -1,0 +1,27 @@
+.card {
+   /* padding: 10px 20px;  */
+   padding-right: 20px;
+   
+}
+
+.card img {
+   width: 100%; 
+}
+
+.card h1 {
+   font-weight: 400; 
+   font-size: 27px;
+   line-height: 28px;
+   margin: 10px 0;
+}
+
+.card p {
+   font-size: 15px;
+   line-height: 20px;
+   margin: 10px 0;
+}
+
+.card .abstract {
+   font-style: italic;
+   font-size: 13px; 
+}

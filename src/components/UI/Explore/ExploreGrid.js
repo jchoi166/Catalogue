@@ -1,6 +1,8 @@
 import classes from './ExploreGrid.module.css'
 
 import ExploreCard from './ExploreCard';
+import ExploreThumb from './ExploreThumb';
+
 
 const ExploreGrid = (props) => {
 
@@ -15,10 +17,10 @@ const ExploreGrid = (props) => {
       <ExploreCard articleData={articles[1]} articleImg={articles[1].multimedia[72].url} />
       </div>
       <div className={classes.block3}>
-      {/* <ExploreCard articleData={articles[0]} articleImg={articles[0].multimedia[0].url} /> */}
+      <ExploreThumb articleData={articles[2]} articleImg={articles[2].multimedia[19].url} />
       </div>
       <div className={classes.block4}>
-      {/* <ExploreCard articleData={articles[0]} articleImg={articles[0].multimedia[0].url} /> */}
+      <ExploreThumb articleData={articles[3]} articleImg={articles[3].multimedia[19].url} />
       </div>
     </div>
   );
