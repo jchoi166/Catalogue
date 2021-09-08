@@ -2,6 +2,8 @@
   --font-header: "EB Garamond", serif;
   --font-text: "Raleway", sans-serif;
   --border-color: 1px solid #cecece;
+  --color-primary: #1D5CAF;
+  --color-secondary: #62BFED
 }
 
 *,
