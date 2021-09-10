@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loaderActions } from "./loader-slice";
 
 const exploreSlice = createSlice({
   name: "explore",
@@ -13,6 +14,12 @@ const exploreSlice = createSlice({
 
 export const fetchArticleData = () => {
   return async (dispatch) => {
+
+   // dispatch(loaderActions.setStatus({
+   //    status: 'pending',
+   //    title: 'Retrieving',
+   //    message: 'Retrieving article data'
+   // }))
 
     const fetchData = async () => {
       const response = await fetch(
@@ -30,7 +37,12 @@ export const fetchArticleData = () => {
       const articleData = await fetchData();
       dispatch(exploreActions.loadArticles(articleData));
     } catch (error) {
-      console.log(error);
+      // dispatch(loaderActions.setStatus({
+      //    status: 'error',
+      //    title: 'Error!',
+      //    message: 'Retrieving article data has failed!'
+      // }))
+      console.log(error)
     }
   };
 };

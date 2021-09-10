@@ -6,7 +6,7 @@ import Layout from './components/Layout/Layout'
 import Explore from './components/Pages/Explore'
 import Saved from './components/Pages/Saved'
 import Search from './components/Pages/Search'
-
+import Login from './components/Pages/Login'
 
 import { fetchArticleData } from './store/explore-slice'
 
@@ -33,6 +33,9 @@ function App() {
           </Route>
           <Route path='/explore'>
             <Explore />
+          </Route>
+          <Route path='/Login'>
+            <Login />
           </Route>
           <Route path="*">
             <Redirect to="/" />

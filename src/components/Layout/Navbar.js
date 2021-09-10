@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import logoImage from "../../assets/nav-logo.png";
 
-import Login from "../UI/Login";
+import Button from "../UI/Button";
 
 
 const Navbar = () => {
@@ -19,7 +19,9 @@ const Navbar = () => {
         <h3>Catalogue</h3>
       </div>
       {/* Remember to use authCtx to pass Username into login component */}
-      <Login />
+      <Button className={classes.login}>
+        <NavLink to="/login">Login</NavLink>
+      </Button>
     </nav>
   );
 };
