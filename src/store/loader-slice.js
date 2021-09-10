@@ -5,7 +5,7 @@ const loaderSlice = createSlice({
    name: 'loader',
    initialState: {notification: null},
    reducers: {
-      showNotification(state, action) {
+      setStatus(state, action) {
         state.notification = {
          status: action.payload.status,
          title: action.payload.title,

@@ -13,7 +13,7 @@ const ExploreCard = (props) => {
 
   return (
     <div className={classes.card}>
-      <img src={imgPrefix + img}></img>
+      <img src={imgPrefix + img} alt={article.headline.main}></img>
       <h1>{article.headline.main}</h1>
       <p>{article.abstract}</p>
       {/* time and author */}

@@ -8,4 +8,5 @@
    border-radius: 3px;
    font-family: var(--font-text);
    font-weight: 500;
+   cursor: pointer;
 }
