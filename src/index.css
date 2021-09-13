@@ -2,8 +2,11 @@
   --font-header: "EB Garamond", serif;
   --font-text: "Raleway", sans-serif;
   --border-color: 1px solid #cecece;
+
   --color-primary: #1D5CAF;
-  --color-secondary: #62BFED
+  --color-primary-highlighted: #4170ad;
+  --color-black-highlighted: rgb(58, 58, 58);
+  --color-success: #03a503;
 }
 
 *,
