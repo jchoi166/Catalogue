@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loaderActions } from "./loader-slice";
+// import { loaderActions } from "./loader-slice";
 
 const searchSlice = createSlice({
   name: "search",
