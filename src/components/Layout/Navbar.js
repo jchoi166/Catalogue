@@ -1,11 +1,21 @@
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { userLogout } from "../../store/auth-slice";
+
 import classes from "./Navbar.module.css";
 import logoImage from "../../assets/nav-logo.png";
 
 import Button from "../UI/Button";
 
-
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const userLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
+
+  const logoutHandler = () => {
+    console.log('logout')
+    dispatch(userLogout())
+  }
+
   return (
     <nav className={classes.navbar + " container"}>
       <div className={classes.navLinks}>
@@ -19,9 +29,12 @@ const Navbar = () => {
         <h3>Catalogue</h3>
       </div>
       {/* Remember to use authCtx to pass Username into login component */}
-      <Button className={classes.login}>
-        <NavLink to="/login">Login</NavLink>
-      </Button>
+      {!userLoggedIn && (
+        <Button className={classes.login}>
+          <NavLink to="/login">Login</NavLink>
+        </Button>
+      )}
+      {userLoggedIn && <Button className={classes.login} onClick={logoutHandler} >Logout</Button>}
     </nav>
   );
 };

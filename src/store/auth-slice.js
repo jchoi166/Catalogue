@@ -11,6 +11,8 @@ const authSlice = createSlice({
       },
       logout(state){
          state.isLoggedIn = false
+         state.token = null
+         state.uId = null
       },
    }
 })
@@ -19,13 +21,14 @@ export const authActions = authSlice.actions
 
 export default authSlice
 
+// Thunks
+
 const FirebaseAPI ='AIzaSyC6rsYpDeS0JX18D5cqfumdrQx_g72FpvY'
 let url
 
 const addUserToDatabase = (userId) => {
-
    const sendRequest = async () => {
-      const response = await fetch(`https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}`,
+      const response = await fetch(`https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json`,
       {
          method: "PUT",
          body: JSON.stringify({
@@ -36,21 +39,19 @@ const addUserToDatabase = (userId) => {
          }
        },)
       
-       if (!response.ok) {
-         throw new Error("Sending cart data failed");
-       }
+       if (!response.ok) throw new Error   
    }
 
    try {
       console.log('new user has been added!')
-      await sendRequest()
+      sendRequest()
    }
    catch (error) {
       console.log(error)
    }
 }
 
-export const sendFetch = (loginInfo) => {
+export const userLogin = (loginInfo) => {
    return async (dispatch) => {
       if (loginInfo.isLogin) {
          url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FirebaseAPI}`
@@ -72,20 +73,34 @@ export const sendFetch = (loginInfo) => {
              }
          })
 
-         if (!response.ok) throw new Error("Could not fetch article data");
+         if (!response.ok) {
+            const errorData = await response.json()
+            throw (errorData)
+         };
 
          const data = await response.json()
+         console.log(data)
 
          return data
       }
 
       try {
-         const loginData = fetchData()
+         const loginData = await fetchData()
+
+         // Adds user to database if singing up
+         if(!loginInfo.isLogin) {
+            addUserToDatabase(loginData.localId)
+         }
+
+         localStorage.setItem("token", loginData.idToken);
+         // localStorage.setItem("expirationTime", loginData.expiresIn);
+         localStorage.setItem("uId", loginData.localId);
+
          dispatch(authActions.login({
             token: loginData.idToken, 
-            uId: loginData.localId
+            uId: loginData.localId,
+            isLoggedIn: true,
          }))
-         addUserToDatabase(loginData.idToken)
       }
       catch (error) {
          console.log(error)
@@ -93,3 +108,36 @@ export const sendFetch = (loginInfo) => {
    }
 }
 
+export const userLogout = () => {
+   return (dispatch) => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("uId");
+      // localStorage.removeItem("expirationTime");
+      dispatch(authActions.logout())
+   }
+}
+
+// const calculateRemainingTime = (expirationTime) => {
+//    const currentTime = new Date().getTime();
+//    const adjExpirationTime = new Date(expirationTime).getTime();
+ 
+//    const remainingDuration = adjExpirationTime - currentTime;
+ 
+//    return remainingDuration;
+// };
+
+export const checkLogin = () => {
+   return (dispatch) => {
+      const storedToken = localStorage.getItem("token");
+      const storedId = localStorage.getItem("uId");
+      // const storedExpirationDate = localStorage.getItem("expirationTime");
+
+      if (storedToken, storedId) {
+         dispatch(authActions.login({
+            token: storedToken,
+            uId: storedId,
+            isLoggedIn: true
+         }))
+      }
+   }
+}
