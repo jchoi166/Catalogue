@@ -37,7 +37,7 @@ const addUserToDatabase = (userId) => {
          headers: {
            "Content-Type": "application/json",
          }
-       },)
+       })
       
        if (!response.ok) throw new Error   
    }
@@ -52,6 +52,7 @@ const addUserToDatabase = (userId) => {
 }
 
 export const userLogin = (loginInfo) => {
+   
    return async (dispatch) => {
       if (loginInfo.isLogin) {
          url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FirebaseAPI}`
@@ -87,14 +88,14 @@ export const userLogin = (loginInfo) => {
       try {
          const loginData = await fetchData()
 
-         // Adds user to database if singing up
+         // Adds user to database if signing up
          if(!loginInfo.isLogin) {
             addUserToDatabase(loginData.localId)
          }
 
          localStorage.setItem("token", loginData.idToken);
-         // localStorage.setItem("expirationTime", loginData.expiresIn);
          localStorage.setItem("uId", loginData.localId);
+         // localStorage.setItem("expirationTime", loginData.expiresIn);
 
          dispatch(authActions.login({
             token: loginData.idToken, 
@@ -103,7 +104,8 @@ export const userLogin = (loginInfo) => {
          }))
       }
       catch (error) {
-         console.log(error)
+         // alert(error.message)
+         alert(error.error.message)
       }
    }
 }
