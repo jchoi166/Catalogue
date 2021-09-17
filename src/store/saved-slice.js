@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const savedSlice = createSlice({
   name: "saved",
-  initialState: { savedBooks: [], changed: false },
+  initialState: { savedBooks: [], changed: false, isLoaded: false },
   reducers: {
     setBooks(state, action) {
       state.savedBooks = action.payload;

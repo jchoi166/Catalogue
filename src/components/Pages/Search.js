@@ -7,12 +7,14 @@ import { sendNewBooks } from "../../store/saved-slice";
 import PageHeader from "../Layout/PageHeader";
 import SearchInput from "../UI/Search/SearchInput";
 import SearchItem from "../UI/Search/SearchItem";
+import Loader from "../UI/Loader";
 
 let isInitial = true
 
 const Search = () => {
    const dispatch = useDispatch()
    const searchResults = useSelector(state => state.searchSlice.books)
+   const isLoaded = useSelector(state => state.searchSlice.isLoaded)
    const savedBooks = useSelector(state => state.savedSlice)
    const uId = useSelector(state => state.authSlice.uId)
 
@@ -42,7 +44,8 @@ const Search = () => {
          <SearchInput />
       </div>
       <div>
-         {searchResults && searchResults.map((item) => <SearchItem onSaveBook={saveBookHandler} key={item.id} book={item}/>)}
+         {isLoaded === "loaded" && searchResults.map((item) => <SearchItem onSaveBook={saveBookHandler} key={item.id} book={item}/>)}
+         {isLoaded === "pending" && <Loader/>}
       </div>
    </section>
 }

@@ -3,22 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
   name: "search",
-  initialState: { books: [], isLoaded: false },
+  initialState: { books: [], isLoaded: null },
   reducers: {
     loadBooks(state, action) {
       state.books = action.payload;
-      state.isLoaded = true
+      state.isLoaded = 'loaded'
     },
+    setStatus(state, action) {
+      state.isLoaded = action.payload
+    }
   },
 });
 
 export const searchByQuery = (query) => {
   return async (dispatch) => {
-   // dispatch(loaderActions.setStatus({
-   //    status: 'pending',
-   //    title: 'Retrieving',
-   //    message: 'Retrieving book data'
-   // }))
+    dispatch(searchActions.setStatus('pending'))
+
     const fetchData = async () => {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=40`
@@ -48,12 +48,9 @@ export const searchByQuery = (query) => {
     try {
       const bookData = await fetchData();
       dispatch(searchActions.loadBooks(bookData));
+      dispatch(searchActions.setStatus('loaded'))
     } catch (error) {
-      // dispatch(loaderActions.setStatus({
-      //    status: 'error',
-      //    title: 'Error!',
-      //    message: 'Retrieving book data has failed!'
-      // }))
+
       console.log(error)
     }
   };

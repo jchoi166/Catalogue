@@ -1,23 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Button from "./Button";
-import classes from "./ErrorModal.module.css";
+import classes from "./Modal.module.css";
 
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onConfirm} />;
+  return <div className={classes.backdrop} onClick={props.onClose} />;
 };
 
 const ModalOverlay = (props) => {
+  const book = props.book
+
   return (
     <div className={classes.modal}>
       <header className={classes.header}>
-        <h2>{props.title}</h2>
+        <h2>{book.title}</h2>
       </header>
       <div className={classes.content}>
-        <p>{props.message}</p>
+        <p>{book.description}</p>
       </div>
       <footer className={classes.actions}>
-        <Button onClick={props.onConfirm}>Okay</Button>
+        <Button onClick={props.onConfirm}>Remove From List</Button>
+        <Button onClick={props.onConfirm}>Find A Copy</Button>
+        <Button onClick={props.onConfirm}>More Info</Button>
       </footer>
     </div>
   );
@@ -27,14 +31,15 @@ const Modal = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <Backdrop onConfirm={props.onConfirm} />,
+        <Backdrop onClose={props.onClose} />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay
-          title={props.title}
-          message={props.message}
-          onConfirm={props.onConfirm}
+        <ModalOverlay 
+          book={props.book}
+          // title={props.title}
+          // message={props.message}
+          // onConfirm={props.onConfirm}
         />,
         document.getElementById("overlay-root")
       )}

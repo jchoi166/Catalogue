@@ -58,7 +58,7 @@ export const userLogout = () => {
    return (dispatch) => {
       localStorage.removeItem("token");
       localStorage.removeItem("uId");
-      localStorage.removeItem("expirationTime");
+      localStorage.removeItem("expirationDate");
       dispatch(authActions.logout())
    }
 }
@@ -140,11 +140,12 @@ export const checkLogin = () => {
    return (dispatch) => {
       const storedToken = localStorage.getItem("token");
       const storedId = localStorage.getItem("uId");
-      const storedExpirationDate = localStorage.getItem("expirationTime");
+      const storedExpirationDate = localStorage.getItem("expirationDate");
 
       const remainingTime = calculateRemainingTime(storedExpirationDate);
 
-      if (!storedToken) return
+      console.log(storedToken.toString())
+      console.log(remainingTime)
 
       if (remainingTime <= 60000) {
          userLogout()
