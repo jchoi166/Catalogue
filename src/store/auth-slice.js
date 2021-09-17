@@ -7,6 +7,7 @@ const authSlice = createSlice({
       login(state, action){
          state.token = action.payload.token
          state.uId = action.payload.uId
+         state.expirationDate = action.payload.expirationDate
          state.isLoggedIn = true
       },
       logout(state){
@@ -25,6 +26,7 @@ export default authSlice
 
 const FirebaseAPI ='AIzaSyC6rsYpDeS0JX18D5cqfumdrQx_g72FpvY'
 let url
+let logoutTimer
 
 const addUserToDatabase = (userId) => {
    const sendRequest = async () => {
@@ -48,6 +50,16 @@ const addUserToDatabase = (userId) => {
    }
    catch (error) {
       console.log(error)
+   }
+}
+
+
+export const userLogout = () => {
+   return (dispatch) => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("uId");
+      localStorage.removeItem("expirationTime");
+      dispatch(authActions.logout())
    }
 }
 
@@ -95,11 +107,15 @@ export const userLogin = (loginInfo) => {
 
          localStorage.setItem("token", loginData.idToken);
          localStorage.setItem("uId", loginData.localId);
-         // localStorage.setItem("expirationTime", loginData.expiresIn);
+         localStorage.setItem("expirationDate", loginData.expiresIn);
+
+         const remainingTime = calculateRemainingTime(loginData.expiresIn);
+         logoutTimer = setTimeout(userLogout, remainingTime);
 
          dispatch(authActions.login({
             token: loginData.idToken, 
             uId: loginData.localId,
+            expirationDate: loginData.expiresIn,
             isLoggedIn: true,
          }))
       }
@@ -110,36 +126,38 @@ export const userLogin = (loginInfo) => {
    }
 }
 
-export const userLogout = () => {
-   return (dispatch) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("uId");
-      // localStorage.removeItem("expirationTime");
-      dispatch(authActions.logout())
-   }
-}
 
-// const calculateRemainingTime = (expirationTime) => {
-//    const currentTime = new Date().getTime();
-//    const adjExpirationTime = new Date(expirationTime).getTime();
+const calculateRemainingTime = (expirationTime) => {
+   const currentTime = new Date().getTime();
+   const adjExpirationTime = new Date(expirationTime).getTime();
  
-//    const remainingDuration = adjExpirationTime - currentTime;
+   const remainingDuration = adjExpirationTime - currentTime;
  
-//    return remainingDuration;
-// };
+   return remainingDuration;
+};
 
 export const checkLogin = () => {
    return (dispatch) => {
       const storedToken = localStorage.getItem("token");
       const storedId = localStorage.getItem("uId");
-      // const storedExpirationDate = localStorage.getItem("expirationTime");
+      const storedExpirationDate = localStorage.getItem("expirationTime");
 
-      if (storedToken, storedId) {
+      const remainingTime = calculateRemainingTime(storedExpirationDate);
+
+      if (!storedToken) return
+
+      if (remainingTime <= 60000) {
+         userLogout()
+
+       } else {
+         logoutTimer = setTimeout(userLogout, remainingTime)
          dispatch(authActions.login({
             token: storedToken,
             uId: storedId,
+            expirationDate: storedExpirationDate,
             isLoggedIn: true
          }))
-      }
+       }
+       
    }
 }

@@ -4,7 +4,7 @@ import classes from "./Search.module.css"
 import { savedActions } from "../../store/saved-slice";
 import { sendNewBooks } from "../../store/saved-slice";
 
-import PageHeader from "../UI/PageHeader";
+import PageHeader from "../Layout/PageHeader";
 import SearchInput from "../UI/Search/SearchInput";
 import SearchItem from "../UI/Search/SearchItem";
 
