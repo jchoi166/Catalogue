@@ -9,6 +9,7 @@ import Search from './components/Pages/Search'
 import Login from './components/Pages/Login'
 
 import { fetchArticleData } from './store/explore-slice'
+import { checkLogin } from './store/auth-slice'
 
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
   useEffect(() => {
     dispatch(fetchArticleData());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(checkLogin())
+  }, [dispatch])
 
   return (
     <Layout>

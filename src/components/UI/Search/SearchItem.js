@@ -10,6 +10,10 @@ const SearchItem = (props) => {
     return formattedDate.getFullYear();
   };
 
+  const saveBook = () => {
+    props.onSaveBook(book)
+  }
+
   return (
     <div className={classes.item}>
       <div className={classes.image}>
@@ -32,7 +36,7 @@ const SearchItem = (props) => {
         </p>
         <p className={classes.description}>{book.description}</p>
         <div className={classes.actions}>
-          <Button>Bookmark</Button>
+          <Button onClick={saveBook}>Bookmark</Button>
           <a href={book.buyLink} target="_blank" rel="noopener noreferrer">
             <Button>Find a copy</Button>
           </a>

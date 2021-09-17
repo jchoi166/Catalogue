@@ -1,18 +1,27 @@
 import { useState, useRef } from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { useHistory } from "react-router";
 import classes from './Login.module.css'
-import { authActions } from "../../store/auth-slice";
+import { userLogin } from "../../store/auth-slice";
 
 import Button from "../UI/Button";
 
 
 
 const Login = () => {
-
    const [isLogin, setIsLogin] = useState(true);
    const [isLoading, setIsLoading] = useState(false);
+   
+   const history = useHistory()
+   const dispatch = useDispatch()
 
    const emailInputRef = useRef();
    const passwordInputRef = useRef();
+
+   const isLoggedIn = useSelector(state => state.authSlice.isLoggedIn)
+   if (isLoggedIn) history.replace("/")
+
+
 
    const switchAuthModeHandler = () => {
       setIsLogin((prevState) => !prevState);
@@ -22,6 +31,11 @@ const Login = () => {
    const submitHandler = (event) => {
       event.preventDefault()
       console.log("signed in!")
+      const enteredEmail = emailInputRef.current.value
+      const enteredPassword = passwordInputRef.current.value
+
+      // console.log(enteredEmail, enteredPassword)
+      dispatch(userLogin({enteredEmail, enteredPassword, isLogin}))
    }
 
    return (

@@ -31,6 +31,7 @@ export const searchByQuery = (query) => {
          const formatInput = (input) => input.replace(/ /gi, "+")
          const formattedTitle = formatInput(item.volumeInfo.title)
          return {
+            id: item.id,
             title: item.volumeInfo.title,
             authors: item.volumeInfo.authors,
             publishDate: item.volumeInfo.publishedDate,
