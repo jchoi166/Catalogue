@@ -1,0 +1,29 @@
+.item {
+   display: flex; 
+   flex-direction: column;
+   /* box-shadow: 2px 2px 2px rgb(190, 190, 190); */
+   /* width: fit-content; */
+   /* height: 100%;  */
+   justify-content: space-between;
+}
+
+.imgContainer {
+   height: 100%;
+   box-shadow: 2px 2px 2px #8e8e8e;
+   margin-bottom: 10px; 
+   cursor: pointer;
+   transition: all .1s; 
+}
+
+.imgContainer:hover {
+   transform: translate(-3px, -3px);
+   box-shadow: 5px 5px 2px #8e8e8e;
+}
+
+.button {
+   width: 102%; 
+}
+
+.item img {
+   /* height: 100%; */
+}

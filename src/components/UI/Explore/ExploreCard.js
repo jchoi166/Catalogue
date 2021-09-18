@@ -13,7 +13,9 @@ const ExploreCard = (props) => {
 
   return (
     <div className={classes.card}>
-      <img src={imgPrefix + img} alt={article.headline.main}></img>
+      <a href={article.web_url} target="_blank" rel="noopener noreferrer">
+        <img src={imgPrefix + img} alt={article.headline.main}></img>
+      </a>
       <h1>{article.headline.main}</h1>
       <p>{article.abstract}</p>
       {/* time and author */}

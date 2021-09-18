@@ -3,13 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const savedSlice = createSlice({
   name: "saved",
-  initialState: { savedBooks: [], changed: false },
+  initialState: { savedBooks: [], changed: false, isLoaded: false, savedIds: [] },
   reducers: {
     setBooks(state, action) {
-      state.savedBooks = action.payload;
+      state.savedBooks = action.payload.savedBooks;
+      state.savedIds = action.payload.savedIds;
     },
     addBook(state, action) {
-      state.savedBooks.push(action.payload)
+      state.savedBooks.push(action.payload.book)
+      state.savedIds.push(action.payload.id)
       state.changed = true
     },
     removeBook(state, action) {
@@ -42,7 +44,11 @@ export const fetchSavedBooks = (userId) => {
 
     try {
       const bookData = await fetchData();
-      dispatch(savedActions.setBooks(bookData.savedBooks))
+      const savedIds = bookData.savedBooks.map(book => book.id)
+      dispatch(savedActions.setBooks({
+        savedBooks: bookData.savedBooks,
+        savedIds
+      }))
       // dispatch(searchActions.loadBooks(bookData));
     } catch (error) {
 

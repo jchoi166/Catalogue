@@ -36,7 +36,8 @@ const SearchItem = (props) => {
         </p>
         <p className={classes.description}>{book.description}</p>
         <div className={classes.actions}>
-          <Button onClick={saveBook}>Bookmark</Button>
+        {!props.isSaved && <Button onClick={saveBook}>Bookmark</Button>}
+        {props.isSaved && <Button className={classes.disabled} disabled>Bookmarked!</Button>}
           <a href={book.buyLink} target="_blank" rel="noopener noreferrer">
             <Button>Find a copy</Button>
           </a>

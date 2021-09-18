@@ -1,0 +1,8 @@
+.saved {
+   display: grid; 
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   grid-gap: 20px;
+   justify-items: center;
+
+   padding-top: 2rem;
+}

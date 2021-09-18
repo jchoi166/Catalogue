@@ -7,13 +7,17 @@ import { sendNewBooks } from "../../store/saved-slice";
 import PageHeader from "../Layout/PageHeader";
 import SearchInput from "../UI/Search/SearchInput";
 import SearchItem from "../UI/Search/SearchItem";
+import Loader from "../UI/Loader";
 
 let isInitial = true
 
 const Search = () => {
    const dispatch = useDispatch()
    const searchResults = useSelector(state => state.searchSlice.books)
-   const savedBooks = useSelector(state => state.savedSlice)
+   const isLoaded = useSelector(state => state.searchSlice.isLoaded)
+   const savedBooks = useSelector(state => state.savedSlice.savedBooks)
+   const savedIds = useSelector(state => state.savedSlice.savedIds)
+   const savedChanged = useSelector(state => state.savedSlice.changed)
    const uId = useSelector(state => state.authSlice.uId)
 
    useEffect(() => {
@@ -23,16 +27,31 @@ const Search = () => {
         return
       }
   
-      if (savedBooks.changed) {
-         console.log(savedBooks.changed, savedBooks.savedBooks, uId)
-         sendNewBooks(savedBooks.savedBooks, uId)
+      // Whenever savedBooks state changes, ie, new book is added, send the list of books to firebase
+      if (savedChanged) {
+         console.log(savedChanged, savedBooks, uId)
+         sendNewBooks(savedBooks, uId)
       }
-   }, [savedBooks.savedBooks]);
+   }, [savedBooks]);
 
    const saveBookHandler = (book) => {
-      dispatch(savedActions.addBook(book))
-      console.log(savedBooks.savedBooks)
+      dispatch(savedActions.addBook({
+         id: book.id,
+         book 
+      }))
+      console.log(savedBooks)
       // sendNewBooks(savedBooks)
+   }
+
+   const checkSavedHandler = (book) => {
+      let isSaved
+      if (savedIds.includes(book.id)) {
+         console.log('this book is saved!')
+         isSaved = true
+      } else {
+         isSaved =false
+      }
+         return <SearchItem onSaveBook={saveBookHandler} isSaved={isSaved} key={book.id} book={book}/>
    }
    
 
@@ -42,7 +61,9 @@ const Search = () => {
          <SearchInput />
       </div>
       <div>
-         {searchResults && searchResults.map((item) => <SearchItem onSaveBook={saveBookHandler} key={item.id} book={item}/>)}
+         {/* {isLoaded === "loaded" && searchResults.map((item) => <SearchItem onSaveBook={saveBookHandler} key={item.id} book={item}/>)} */}
+         {isLoaded === "loaded" && searchResults.map((item) => checkSavedHandler(item))}
+         {isLoaded === "pending" && <Loader/>}
       </div>
    </section>
 }

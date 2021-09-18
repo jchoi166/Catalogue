@@ -1,30 +1,42 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { fetchSavedBooks } from "../../store/saved-slice"
+
+
+import classes from './Saved.module.css'
 
 import PageHeader from "../Layout/PageHeader"
 // import SavedGrid from "../UI/Saved/SavedGrid"
 import SavedItem from "../UI/Saved/SavedItem"
 // import SearchItem from "../UI/Search/SearchItem"
+import Modal from "../UI/Modal"
+
 
 const Saved = () => {
-
    const dispatch = useDispatch()
-   const uId = useSelector(state => state.authSlice.uId)
    const savedBooks = useSelector(state => state.savedSlice.savedBooks)
+   const [modalIsVisible, setModalIsVisible] = useState(false)
+   const [modalData, setModalData] = useState({})
    
 
-   useEffect(() => {
-      dispatch(fetchSavedBooks(uId))
-   }, [dispatch])
+
+
+   const openModalHandler = (book) => {
+      setModalIsVisible(true)
+      setModalData(book)
+   }
+
+   const closeModalHandler = () => {
+      setModalIsVisible(false)
+   }
 
    return (
       <section>
          <PageHeader title={"Saved"} caption={"View your bookmarked books here!"}/>
          {/* <SavedGrid books={savedBooks} /> */}
-         <div>
-            {savedBooks && savedBooks.map(book => <SavedItem book={book}/>)} 
+         <div className={classes.saved}>
+            {savedBooks && savedBooks.map(book => <SavedItem onOpenModal={openModalHandler} key={book.id} book={book}/>)} 
          </div>
+         {modalIsVisible && <Modal book={modalData} onClose={closeModalHandler}></Modal>}
       </section>
    )
 }
