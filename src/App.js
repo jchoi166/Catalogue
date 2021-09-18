@@ -1,6 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Layout from './components/Layout/Layout'
 import Explore from './components/Pages/Explore'
@@ -10,11 +10,14 @@ import Login from './components/Pages/Login'
 
 import { fetchArticleData } from './store/explore-slice'
 import { checkLogin } from './store/auth-slice'
+import { fetchSavedBooks } from './store/saved-slice'
 
 
 function App() {
 
   const dispatch = useDispatch()
+  const uId = useSelector(state => state.authSlice.uId)
+
 
   useEffect(() => {
     dispatch(fetchArticleData());
@@ -23,6 +26,12 @@ function App() {
   useEffect(() => {
     dispatch(checkLogin())
   }, [dispatch])
+
+  useEffect(() => {
+    if (uId) {
+       dispatch(fetchSavedBooks(uId))
+    }
+ }, [dispatch, uId])
 
   return (
     <Layout>

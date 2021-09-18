@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { fetchSavedBooks } from "../../store/saved-slice"
+
 
 import classes from './Saved.module.css'
 
@@ -13,17 +13,12 @@ import Modal from "../UI/Modal"
 
 const Saved = () => {
    const dispatch = useDispatch()
-   const uId = useSelector(state => state.authSlice.uId)
    const savedBooks = useSelector(state => state.savedSlice.savedBooks)
    const [modalIsVisible, setModalIsVisible] = useState(false)
    const [modalData, setModalData] = useState({})
    
 
-   useEffect(() => {
-      if (uId) {
-         dispatch(fetchSavedBooks(uId))
-      }
-   }, [dispatch, uId])
+
 
    const openModalHandler = (book) => {
       setModalIsVisible(true)

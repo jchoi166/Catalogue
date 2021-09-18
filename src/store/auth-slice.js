@@ -14,6 +14,7 @@ const authSlice = createSlice({
          state.isLoggedIn = false
          state.token = null
          state.uId = null
+         state.expirationDate = null
       },
    }
 })
@@ -144,10 +145,10 @@ export const checkLogin = () => {
 
       const remainingTime = calculateRemainingTime(storedExpirationDate);
 
-      console.log(storedToken.toString())
+      // console.log(storedToken.toString())
       console.log(remainingTime)
 
-      if (remainingTime <= 60000) {
+      if (remainingTime <= 6000) {
          userLogout()
 
        } else {

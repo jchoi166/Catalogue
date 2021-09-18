@@ -66,3 +66,6 @@
    margin-right: 10px;
 }
 
+.disabled {
+   background-color: green;
+}
