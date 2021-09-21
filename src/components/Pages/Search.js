@@ -41,7 +41,7 @@ const Search = () => {
    
 
    return <section>
-      <PageHeader title={'Search'} caption={'Search for new titles using different filters!'} />
+      <PageHeader title={'Search'} caption={'Discover new books by searching by title!'} />
       <div className={classes.searchBar}>
          <SearchInput />
       </div>

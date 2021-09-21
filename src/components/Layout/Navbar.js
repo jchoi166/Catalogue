@@ -25,10 +25,8 @@ const Navbar = () => {
       </div>
       <div className={classes.logo}>
         <img src={logoImage} alt="c/at silhouette" />
-        {/* <img src='https://i.pinimg.com/564x/82/ce/81/82ce81fecd6bda8a36407abaa5bc194e.jpg' alt="cat silhouette" /> */}
-        <h3>Catalogue</h3>
+        <NavLink to="/explore"><h3>Catalogue</h3></NavLink>
       </div>
-      {/* Remember to use authCtx to pass Username into login component */}
       {!userLoggedIn && (
         <Button className={classes.login}>
           <NavLink to="/login">Login</NavLink>

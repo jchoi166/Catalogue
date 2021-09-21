@@ -1,6 +1,3 @@
-.thumb {
-
-}
 
 .thumb img {
    float: right; 
@@ -15,6 +12,10 @@
    margin-bottom: 10px; 
 }
 
+.thumb h1:hover {
+   text-decoration: underline;
+}
+
 .thumb p {
    font-size: 15px;
    line-height: 20px;
@@ -24,4 +25,10 @@
 .thumb .abstract {
    font-style: italic;
    font-size: 13px; 
+}
+
+a {
+   text-decoration: none;
+   color: black;
+   cursor: pointer;
 }

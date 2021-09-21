@@ -6,3 +6,15 @@
 
    padding-top: 2rem;
 }
+
+.notLogin {
+   width: 100%;
+   display: flex; 
+   align-items: center;
+   flex-direction: column;
+   padding-top: 10rem;
+}
+
+.notLogin h1 {
+   margin-bottom: 20px;
+}

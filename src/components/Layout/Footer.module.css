@@ -1,0 +1,16 @@
+
+
+.footer {
+   /* padding: 20px;  */
+   margin-top: 10px; 
+}
+
+.solid {
+   border: 0; 
+   border-top: 2px solid #cecece
+}
+
+.footer h2 {
+   border-top: 1px solid #cecece;
+   margin-top: 2px; 
+}

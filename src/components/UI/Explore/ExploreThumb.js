@@ -13,7 +13,9 @@ const ExploreThumb = (props) => {
 
   return (
     <div className={classes.thumb}>
-      <h1>{article.headline.main}</h1>
+      <a href={article.web_url} target="_blank" rel="noopener noreferrer">
+        <h1>{article.headline.main}</h1>
+      </a>
       <a href={article.web_url} target="_blank" rel="noopener noreferrer">
         <img src={imgPrefix + img} alt={article.headline.main}></img>
       </a>

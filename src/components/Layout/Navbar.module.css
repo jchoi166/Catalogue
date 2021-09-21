@@ -45,6 +45,14 @@
 .logo h3 {
    font-weight: 500;
 }
+.logo a,
+.logo a:visited,
+.logo a:active {
+   text-decoration: none;
+   color: black;
+   /* margin-right: 30px; */
+   cursor: pointer;
+}
 
 .login a,
 .login a:visited,

@@ -4,8 +4,10 @@ import { useDispatch } from "react-redux";
 import classes from "./SearchInput.module.css";
 import { searchByQuery } from "../../../store/search-slice";
 
+let searchQuery = ""
+
 const SearchInput = (props) => {
-  const [currentInput, setCurrentInput] = useState("");
+  const [currentInput, setCurrentInput] = useState(searchQuery);
   const dispatch = useDispatch()
 
 
@@ -17,6 +19,7 @@ const SearchInput = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    searchQuery = currentInput
     const query = formatInput(currentInput)
     // console.log(query + '  has been submitted!')
     dispatch(searchByQuery(query))
