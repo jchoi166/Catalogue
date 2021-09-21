@@ -11,12 +11,16 @@ import Login from './components/Pages/Login'
 import { fetchArticleData } from './store/explore-slice'
 import { checkLogin } from './store/auth-slice'
 import { fetchSavedBooks } from './store/saved-slice'
+import { sendNewBooks } from './store/saved-slice'
 
+let isInitial = true
 
 function App() {
 
   const dispatch = useDispatch()
   const uId = useSelector(state => state.authSlice.uId)
+  const savedChanged = useSelector(state => state.savedSlice.changed)
+  const savedBooks = useSelector(state => state.savedSlice.savedBooks)
 
 
   useEffect(() => {
@@ -32,6 +36,17 @@ function App() {
        dispatch(fetchSavedBooks(uId))
     }
  }, [dispatch, uId])
+
+ useEffect(() => {
+  if (isInitial) {
+    isInitial = false
+    return
+  }
+  // Whenever savedBooks state changes, ie, new book is added, send the list of books to firebase
+  if (savedChanged) {
+     sendNewBooks(savedBooks, uId)
+  }
+}, [savedBooks]);
 
   return (
     <Layout>

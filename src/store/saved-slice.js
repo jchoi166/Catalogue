@@ -15,7 +15,14 @@ const savedSlice = createSlice({
       state.changed = true
     },
     removeBook(state, action) {
-      //  state.books = state.books - action.payload
+      // will receive id in action payload
+      const bookIndex = state.savedBooks.findIndex(book => book.id === action.payload)
+      state.savedBooks.splice(bookIndex, 1)
+
+      const idIndex = state.savedIds.indexOf(action.payload)
+      state.savedIds.splice(idIndex, 1)
+
+      state.changed = true
     },
   },
 });
@@ -86,4 +93,3 @@ export const sendNewBooks = (booksArray, userId) => {
     }
   
 };
-
