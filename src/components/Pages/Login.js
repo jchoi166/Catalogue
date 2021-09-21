@@ -2,7 +2,9 @@ import { useState, useRef } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router";
 import classes from './Login.module.css'
+
 import { userLogin } from "../../store/auth-slice";
+import { userLogout } from "../../store/auth-slice";
 
 import Button from "../UI/Button";
 
@@ -18,9 +20,10 @@ const Login = () => {
    const emailInputRef = useRef();
    const passwordInputRef = useRef();
 
+   const expirationTime = useSelector(state => state.authSlice.expirationTime)
+
    const isLoggedIn = useSelector(state => state.authSlice.isLoggedIn)
    if (isLoggedIn) history.replace("/")
-
 
 
    const switchAuthModeHandler = () => {
@@ -36,6 +39,10 @@ const Login = () => {
 
       // console.log(enteredEmail, enteredPassword)
       dispatch(userLogin({enteredEmail, enteredPassword, isLogin}))
+      setTimeout(function(){
+        console.log('dispatch happened!')
+        dispatch(userLogout())
+      }, expirationTime)
    }
 
    return (
