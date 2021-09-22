@@ -11,7 +11,7 @@ const Layout = (props) => {
          <Navbar />
          <div className={classes.layout + ' container'}>
             {props.children}
-            <Footer/>
+         <Footer/>
          </div>
       </Fragment>
    )
