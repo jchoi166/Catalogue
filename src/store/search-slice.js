@@ -28,15 +28,13 @@ export const searchByQuery = (query) => {
 
       const data = await response.json();
       const transformedData = data.items.map(item => {
-         const formatInput = (input) => input.replace(/ /gi, "+")
-         const formattedTitle = formatInput(item.volumeInfo.title)
          return {
             id: item.id,
             title: item.volumeInfo.title,
             authors: item.volumeInfo.authors,
             publishDate: item.volumeInfo.publishedDate,
             description: item.volumeInfo.description,
-            buyLink: `https://www.amazon.com/s?k=${formattedTitle}&i=stripbooks&ref=nb_sb_noss_2`,
+            buyLink: `https://www.amazon.com/s?k=${query}&i=stripbooks&ref=nb_sb_noss_2`,
             url: item.volumeInfo.infoLink,
             image: item.volumeInfo.imageLinks
          }

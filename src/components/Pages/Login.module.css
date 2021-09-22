@@ -1,5 +1,5 @@
 .auth {
-   margin: 3rem auto;
+   margin: 5rem auto;
    width: 95%;
    max-width: 25rem;
    border-radius: 6px;
@@ -10,7 +10,7 @@
  
  .auth h1 {
    text-align: center;
-   margin-bottom: 20px; 
+   margin-bottom: 2rem; 
  }
  
  .control {
@@ -20,7 +20,7 @@
  .control label {
    display: block;
    text-align: left;
-   font-size: 13px;
+   font-size: 1.3rem;
    font-weight: 600;
    margin-bottom: 0.3rem;
  }

@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import Footer from './Footer'
 import classes from './Layout.module.css'
 import Navbar from './Navbar'
 
@@ -10,6 +11,7 @@ const Layout = (props) => {
          <Navbar />
          <div className={classes.layout + ' container'}>
             {props.children}
+         <Footer/>
          </div>
       </Fragment>
    )

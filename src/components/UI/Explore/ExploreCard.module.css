@@ -1,6 +1,6 @@
 .card {
    /* padding: 10px 20px;  */
-   padding-right: 20px;
+   padding-right: 2rem;
    
 }
 
@@ -10,18 +10,28 @@
 
 .card h1 {
    font-weight: 400; 
-   font-size: 27px;
-   line-height: 28px;
-   margin: 10px 0;
+   font-size: 2.7rem;
+   line-height: 2.8rem;
+   margin: 1rem 0;
+}
+
+.card h1:hover {
+   text-decoration: underline;
 }
 
 .card p {
-   font-size: 15px;
-   line-height: 20px;
-   margin: 10px 0;
+   font-size: 1.5rem;
+   line-height: 2rem;
+   margin: 1rem 0;
 }
 
 .card .abstract {
    font-style: italic;
-   font-size: 13px; 
+   font-size: 1.3rem; 
+}
+
+a {
+   text-decoration: none;
+   color: black;
+   cursor: pointer;
 }

@@ -7,14 +7,14 @@ const authSlice = createSlice({
       login(state, action){
          state.token = action.payload.token
          state.uId = action.payload.uId
-         state.expirationDate = action.payload.expirationDate
+         state.expirationTime = action.payload.expirationTime
          state.isLoggedIn = true
       },
       logout(state){
          state.isLoggedIn = false
          state.token = null
          state.uId = null
-         state.expirationDate = null
+         state.expirationTime = null
       },
    }
 })
@@ -54,12 +54,15 @@ const addUserToDatabase = (userId) => {
    }
 }
 
+const clearLocalStorage = () => {
+   localStorage.removeItem("token");
+   localStorage.removeItem("uId");
+   localStorage.removeItem("expirationDate");
+}
 
 export const userLogout = () => {
    return (dispatch) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("uId");
-      localStorage.removeItem("expirationDate");
+      clearLocalStorage()
       dispatch(authActions.logout())
    }
 }
@@ -108,15 +111,19 @@ export const userLogin = (loginInfo) => {
 
          localStorage.setItem("token", loginData.idToken);
          localStorage.setItem("uId", loginData.localId);
-         localStorage.setItem("expirationDate", loginData.expiresIn);
 
-         const remainingTime = calculateRemainingTime(loginData.expiresIn);
-         logoutTimer = setTimeout(userLogout, remainingTime);
+         // Converts the 'expiresIn' value provided by firebase and coverts it to an expiration date/time 
+         const expirationDate = new Date(new Date().getTime() + (+loginData.expiresIn * 1000))
+         localStorage.setItem("expirationDate", expirationDate.toISOString());
+
+         const expirationTime = loginData.expiresIn * 1000
+         // const remainingTime = calculateRemainingTime(expirationTime);
+         // setTimeout(dispatch(userLogout), 5000);
 
          dispatch(authActions.login({
             token: loginData.idToken, 
             uId: loginData.localId,
-            expirationDate: loginData.expiresIn,
+            expirationTime: expirationTime,
             isLoggedIn: true,
          }))
       }
@@ -128,9 +135,9 @@ export const userLogin = (loginInfo) => {
 }
 
 
-const calculateRemainingTime = (expirationTime) => {
+const calculateRemainingTime = (expirationDate) => {
    const currentTime = new Date().getTime();
-   const adjExpirationTime = new Date(expirationTime).getTime();
+   const adjExpirationTime = new Date(expirationDate).getTime();
  
    const remainingDuration = adjExpirationTime - currentTime;
  
@@ -149,14 +156,18 @@ export const checkLogin = () => {
       console.log(remainingTime)
 
       if (remainingTime <= 6000) {
-         userLogout()
+         clearLocalStorage()
+         dispatch(authActions.logout())
 
        } else {
-         logoutTimer = setTimeout(userLogout, remainingTime)
+         logoutTimer = setTimeout(function(){
+            clearLocalStorage()
+            dispatch(authActions.logout())
+         }, remainingTime)
          dispatch(authActions.login({
             token: storedToken,
             uId: storedId,
-            expirationDate: storedExpirationDate,
+            expirationTime: remainingTime,
             isLoggedIn: true
          }))
        }

@@ -20,8 +20,8 @@ const ModalOverlay = (props) => {
       </div>
       <footer className={classes.actions}>
         <Button onClick={props.onConfirm}>Remove From List</Button>
-        <Button onClick={props.onConfirm}>Find A Copy</Button>
-        <Button onClick={props.onConfirm}>More Info</Button>
+          <a href={book.buyLink} target="_blank" rel="noopener noreferrer" ><Button>Find A Copy</Button></a>
+          <a href={book.url} target="_blank" rel="noopener noreferrer" ><Button>More Info</Button></a>
       </footer>
     </div>
   );
