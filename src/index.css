@@ -19,11 +19,13 @@
 
 html {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 62.5%;
 }
 
 body {
   box-sizing: border-box;
   font-family: var(--font-text);
+  /* font-size: 1.6rem; */
 }
 
 h1,
@@ -37,6 +39,13 @@ h4 {
 /* Utility Classes */
 
 .container {
-  padding: 0 8%;
+  max-width: 1200px;
+  margin: 0 auto; 
+  padding: 0 2rem;
 }
 
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 56.25%;
+  }
+}

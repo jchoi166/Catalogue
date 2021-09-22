@@ -1,14 +1,18 @@
+.navSection {
+   width: 100%;
+   position: fixed;
+   border-bottom: var(--border-color);
+}
+
 .navbar {
    display: flex;
    justify-content: space-between;
-   position: fixed;
-   width: 100%; 
+   /* width: 100%;  */
    align-items: center;
-   padding-top: 15px;
-   padding-bottom: 15px;
-   border-bottom: var(--border-color);
-   background-color: white; 
-   /* font-size: 24px */
+   padding-top: 1.5rem;
+   padding-bottom: 1.5rem;
+   background-color: transparent; 
+   font-size: 1.6rem;
 }
 
 
@@ -17,7 +21,7 @@
 .navLinks a:active {
    text-decoration: none;
    color: black;
-   margin-right: 30px;
+   margin-right: 3rem;
    cursor: pointer;
 }
 
@@ -32,14 +36,16 @@
    width: auto; 
    justify-content: center;
    align-items: center;
-   font-size: 24px;
-   padding: 5px 0; 
+   font-size: 2.4rem;
+   padding: .5rem 0; 
    z-index: -1;
+   background-color: white; 
+   height: 100%;
 }
 
 .logo img {
-   height: 39px; 
-   margin-right: 10px;
+   height: 3.9rem; 
+   margin-right: 1rem;
 }
 
 .logo h3 {

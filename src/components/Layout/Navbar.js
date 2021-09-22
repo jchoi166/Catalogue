@@ -17,6 +17,7 @@ const Navbar = () => {
   }
 
   return (
+    <section className={classes.navSection}>
     <nav className={classes.navbar + " container"}>
       <div className={classes.navLinks}>
         <NavLink to="/search">Find A Book!</NavLink>
@@ -34,6 +35,7 @@ const Navbar = () => {
       )}
       {userLoggedIn && <Button className={classes.login} onClick={logoutHandler} >Logout</Button>}
     </nav>
+    </section>
   );
 };
 
