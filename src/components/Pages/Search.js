@@ -8,6 +8,7 @@ import PageHeader from "../Layout/PageHeader";
 import SearchInput from "../UI/Search/SearchInput";
 import SearchItem from "../UI/Search/SearchItem";
 import Loader from "../UI/Loader";
+import Empty from "../UI/Empty";
 
 
 const Search = () => {
@@ -41,7 +42,7 @@ const Search = () => {
    
 
    return <section>
-      <PageHeader title={'Search'} caption={'Discover new books by searching by title!'} />
+      <PageHeader title={'Search'} caption={'Discover great new books!'} />
       <div className={classes.searchBar}>
          <SearchInput />
       </div>
@@ -49,6 +50,7 @@ const Search = () => {
          {/* {isLoaded === "loaded" && searchResults.map((item) => <SearchItem onSaveBook={saveBookHandler} key={item.id} book={item}/>)} */}
          {isLoaded === "loaded" && searchResults.map((item) => checkSavedHandler(item))}
          {isLoaded === "pending" && <Loader/>}
+         {searchResults.length === 0 && <Empty header="No search results at this time." message="Search for a new book by typing in its title in the input bar above!"/>}
       </div>
    </section>
 }

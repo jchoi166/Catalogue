@@ -23,7 +23,12 @@ const SavedItem = (props) => {
    return (
          <div className={classes.item}>
             <div className={classes.imgContainer} onClick={showModalHandler}>
-               <img src={book.image.thumbnail} />
+               {book.image && <img src={book.image.thumbnail} />}
+               {!book.image && 
+               <div className={classes.noImage}>
+                  <i class="fas fa-cat"></i>
+                  <p>Image not available!</p>
+               </div>}
             </div>
             <Button className={classes.button} onClick={removeBook}>Remove</Button>
          </div>
