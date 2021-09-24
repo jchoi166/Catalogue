@@ -46,7 +46,8 @@ const Login = () => {
    }
 
    return (
-      <section className={classes.auth}>
+     <section className={classes.auth}>
+      <div className={classes.authCard}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
@@ -79,6 +80,7 @@ const Login = () => {
           </Button>
         </div>
       </form>
+    </div>
     </section>
    )
 }

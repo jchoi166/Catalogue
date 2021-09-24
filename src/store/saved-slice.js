@@ -32,12 +32,12 @@ export const savedActions = savedSlice.actions;
 export default savedSlice
 
 
-export const fetchSavedBooks = (userId) => {
+export const fetchSavedBooks = (userId, authToken) => {
   return async (dispatch) => {
 
     const fetchData = async () => {
       const response = await fetch(
-        `https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json`
+        `https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json?auth=${authToken}`
       );
 
       if (!response.ok) throw new Error("Could not fetch books by that search!");
@@ -64,18 +64,18 @@ export const fetchSavedBooks = (userId) => {
   };
 };
 
-export const sendNewBooks = (booksArray, userId) => {
+export const sendNewBooks = (booksArray, userId, authToken) => {
   // return async (dispatch) => {
     console.log('function is being reached')
     const sendData = async () => {
 
       const response = await fetch(
-        `https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json`,
+        `https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json?auth=${authToken}`,
         {
           method: "PUT",
           body: JSON.stringify({
-            name: 'Jin',
-            savedBooks: booksArray
+            uid: userId,
+            savedBooks: booksArray,
           }),
           headers: {
             "Content-Type": "application/json",
