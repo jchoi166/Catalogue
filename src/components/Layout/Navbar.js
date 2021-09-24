@@ -22,7 +22,13 @@ const Navbar = () => {
     setShowLinks(!showLinks)
   }
 
+  const hideNavLinksHandler = () => {
+    setShowLinks(false)
+  }
+
   const navLinksClass = `${classes.navLinks} ${showLinks && classes.navShown}`
+  const mobileButtonClass = `${classes.navToggle} ${showLinks && classes.navClicked}`
+  const maskClass = `${classes.maskHidden} ${showLinks && classes.maskShown}`
   
   return (
     <section className={classes.navSection}>
@@ -32,8 +38,8 @@ const Navbar = () => {
         <NavLink to="/saved">Your Books</NavLink>
         <NavLink to="/explore">Explore</NavLink>
       </div>
-      <button className={classes.navToggle} onClick={showLinksHandler}>Open</button>
-      <div className={classes.mask}></div>
+      <button className={mobileButtonClass} onClick={showLinksHandler}><i class="fas fa-bars"></i></button>
+      <div className={maskClass} onClick={hideNavLinksHandler}></div>
       <div className={classes.logo}>
         <img src={logoImage} alt="c/at silhouette" />
         <NavLink to="/explore"><h3>Catalogue</h3></NavLink>

@@ -2,6 +2,7 @@
   width: 100%;
   position: fixed;
   border-bottom: var(--border-color);
+  z-index: 5;
 }
 
 .navbar {
@@ -18,6 +19,7 @@
 
 .navLinks {
   transition: max-height 0.3s, opacity 0.2s;
+  z-index: 1;
 }
 
 .navLinks a,
@@ -50,7 +52,7 @@
   align-items: center;
   font-size: 2.4rem;
   padding: 0.5rem 0;
-  z-index: -1;
+  z-index: 0;
   background-color: white;
   height: 100%;
 }
@@ -72,6 +74,10 @@
   cursor: pointer;
 }
 
+.login {
+  z-index: 1;
+}
+
 .login a,
 .login a:visited,
 .login a:active {
@@ -79,6 +85,21 @@
   text-decoration: none;
   color: white;
   cursor: pointer;
+}
+
+.maskHidden {
+  left: 0;
+  top: 0;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(155, 155, 155, .5);
+  position: absolute;
+  z-index: -4;
+}
+
+.maskShown {
+  display: block; 
 }
 
 @media only screen and (max-width: 750px) {
@@ -111,6 +132,18 @@
 
   .navToggle {
     display: flex;
+    z-index: 1;
+    border-style: none; 
+    background-color: white; 
+    padding: .5rem; 
+  }
+
+  .navClicked {
+    background-color: black; 
+  }
+
+  .navClicked i {
+    color: white; 
   }
 
   .navShown {
@@ -119,4 +152,12 @@
     max-height: 100px;
     opacity: 1;
   }
+}
+
+
+@media only screen and (max-width: 450px) {
+  .navbar .login {
+    padding: .6rem .8rem;
+  }
+
 }

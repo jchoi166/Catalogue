@@ -22,7 +22,7 @@
 .info {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   /* justify-content: center; */
 }
 
 .info h3 {
@@ -85,4 +85,18 @@
 .noImage i {
    font-size: 2.5rem;
    margin-bottom: 1rem; 
+}
+
+@media only screen and (max-width: 450px) {
+   .item {
+      flex-direction: column;
+      text-align: center;
+   }
+   .info {
+      align-items: center;
+   }
+   .image {
+      margin-right: 0;
+      margin-bottom: 1rem;
+   }
 }

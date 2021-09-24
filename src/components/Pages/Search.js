@@ -42,7 +42,7 @@ const Search = () => {
    
 
    return <section>
-      <PageHeader title={'Search'} caption={'Discover great new books!'} />
+      <PageHeader title={'Search'} caption={'Discover great new books and save your favorites after creating an account!'} />
       <div className={classes.searchBar}>
          <SearchInput />
       </div>
