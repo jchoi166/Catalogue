@@ -29,13 +29,13 @@ const FirebaseAPI ='AIzaSyC6rsYpDeS0JX18D5cqfumdrQx_g72FpvY'
 let url
 let logoutTimer
 
-const addUserToDatabase = (userId) => {
+const addUserToDatabase = (userId, authToken) => {
    const sendRequest = async () => {
-      const response = await fetch(`https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json`,
+      const response = await fetch(`https://catalogue-6cbbf-default-rtdb.firebaseio.com/users/${userId}.json?auth=${authToken}`,
       {
          method: "PUT",
          body: JSON.stringify({
-           name: 'Jin'
+           uId: userId
          }),
          headers: {
            "Content-Type": "application/json",
@@ -106,7 +106,7 @@ export const userLogin = (loginInfo) => {
 
          // Adds user to database if signing up
          if(!loginInfo.isLogin) {
-            addUserToDatabase(loginData.localId)
+            addUserToDatabase(loginData.localId, loginData.idToken)
          }
 
          localStorage.setItem("token", loginData.idToken);

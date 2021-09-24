@@ -19,6 +19,7 @@ function App() {
 
   const dispatch = useDispatch()
   const uId = useSelector(state => state.authSlice.uId)
+  const token = useSelector(state => state.authSlice.token)
   const savedChanged = useSelector(state => state.savedSlice.changed)
   const savedBooks = useSelector(state => state.savedSlice.savedBooks)
 
@@ -33,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (uId) {
-       dispatch(fetchSavedBooks(uId))
+       dispatch(fetchSavedBooks(uId, token))
     }
  }, [dispatch, uId])
 
@@ -44,7 +45,7 @@ function App() {
   }
   // Whenever savedBooks state changes, ie, new book is added, send the list of books to firebase
   if (savedChanged) {
-     sendNewBooks(savedBooks, uId)
+     sendNewBooks(savedBooks, uId, token)
   }
 }, [savedBooks]);
 
