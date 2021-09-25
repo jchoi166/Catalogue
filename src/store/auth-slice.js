@@ -117,8 +117,6 @@ export const userLogin = (loginInfo) => {
          localStorage.setItem("expirationDate", expirationDate.toISOString());
 
          const expirationTime = loginData.expiresIn * 1000
-         // const remainingTime = calculateRemainingTime(expirationTime);
-         // setTimeout(dispatch(userLogout), 5000);
 
          dispatch(authActions.login({
             token: loginData.idToken, 
@@ -128,7 +126,6 @@ export const userLogin = (loginInfo) => {
          }))
       }
       catch (error) {
-         // alert(error.message)
          alert(error.error.message)
       }
    }
@@ -152,10 +149,9 @@ export const checkLogin = () => {
 
       const remainingTime = calculateRemainingTime(storedExpirationDate);
 
-      // console.log(storedToken.toString())
       console.log(remainingTime)
 
-      if (remainingTime <= 6000) {
+      if (remainingTime <= 60000) {
          clearLocalStorage()
          dispatch(authActions.logout())
 
