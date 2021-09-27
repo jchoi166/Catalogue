@@ -36,7 +36,7 @@ function App() {
     if (uId) {
        dispatch(fetchSavedBooks(uId, token))
     }
- }, [dispatch, uId])
+ }, [dispatch, uId, token])
 
  useEffect(() => {
   if (isInitial) {
@@ -47,7 +47,7 @@ function App() {
   if (savedChanged) {
      sendNewBooks(savedBooks, uId, token)
   }
-}, [savedBooks]);
+}, [savedBooks, savedChanged, uId, token]);
 
   return (
     <Layout>

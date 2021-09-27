@@ -12,7 +12,6 @@
 
 .image {
    margin-right: 2rem; 
-   /* width: 130px;  */
 }
 
 .image img {
@@ -22,7 +21,6 @@
 .info {
    display: flex;
    flex-direction: column;
-   /* justify-content: center; */
 }
 
 .info h3 {
@@ -30,11 +28,9 @@
    font-weight: 500;
    margin-bottom: 1rem; 
    width: fit-content;
-   /* border-bottom: 1px solid transparent;  */
 }
 
 .info h3:hover {
-   /* border-bottom: 1px solid black;  */
    text-decoration: underline;
 }
 

@@ -27,23 +27,16 @@
  .header h2 {
    margin: 0;
    color: white;
-   /* font-family: var(--font-header) */
  }
  
  .content {
    padding: 1.5rem;
    line-height: 2.3rem;
-   /* display: flex;  */
- }
-
- .content img {
-   /* float: left;  */
  }
  
  .actions {
    padding: 1.5rem;
    display: flex;
-   /* justify-content: flex-end; */
  }
 
  .actions button {
@@ -53,8 +46,6 @@
  @media only screen and (min-width: 768px) {
    .modal {
      left: calc(50% - 30rem);
-     
-     /* margin: auto;  */
      width: 60rem;
    }
  }

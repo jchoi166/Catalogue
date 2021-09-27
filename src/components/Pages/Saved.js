@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import classes from "./Saved.module.css";
 
@@ -9,7 +9,6 @@ import Modal from "../UI/Modal";
 import Empty from "../UI/Empty";
 
 const Saved = () => {
-  const dispatch = useDispatch();
 
   const savedBooks = useSelector((state) => state.savedSlice.savedBooks);
   const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);

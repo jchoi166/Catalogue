@@ -20,7 +20,6 @@ const ExploreCard = (props) => {
         <h1>{article.headline.main}</h1>
       </a>
       <p>{article.abstract}</p>
-      {/* time and author */}
       <p className={classes.abstract}>
         {newDate()} &middot; {article.byline.original}
       </p>

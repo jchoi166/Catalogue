@@ -21,7 +21,6 @@ const SearchInput = (props) => {
     event.preventDefault();
     searchQuery = currentInput
     const query = formatInput(currentInput)
-    // console.log(query + '  has been submitted!')
     dispatch(searchByQuery(query))
   };
 

@@ -37,9 +37,6 @@ const Modal = (props) => {
       {ReactDOM.createPortal(
         <ModalOverlay 
           book={props.book}
-          // title={props.title}
-          // message={props.message}
-          // onConfirm={props.onConfirm}
         />,
         document.getElementById("overlay-root")
       )}

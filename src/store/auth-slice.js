@@ -42,11 +42,13 @@ const addUserToDatabase = (userId, authToken) => {
          }
        })
       
-       if (!response.ok) throw new Error   
+       if (!response.ok) {
+         const errorData = await response.json()
+         throw (errorData)
+      };   
    }
 
    try {
-      console.log('new user has been added!')
       sendRequest()
    }
    catch (error) {
@@ -96,7 +98,6 @@ export const userLogin = (loginInfo) => {
          };
 
          const data = await response.json()
-         console.log(data)
 
          return data
       }
@@ -117,6 +118,11 @@ export const userLogin = (loginInfo) => {
          localStorage.setItem("expirationDate", expirationDate.toISOString());
 
          const expirationTime = loginData.expiresIn * 1000
+
+         logoutTimer = setTimeout(function(){
+            clearLocalStorage()
+            dispatch(authActions.logout())
+         }, expirationTime)
 
          dispatch(authActions.login({
             token: loginData.idToken, 
@@ -149,7 +155,6 @@ export const checkLogin = () => {
 
       const remainingTime = calculateRemainingTime(storedExpirationDate);
 
-      console.log(remainingTime)
 
       if (remainingTime <= 60000) {
          clearLocalStorage()

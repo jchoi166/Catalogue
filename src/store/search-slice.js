@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { loaderActions } from "./loader-slice";
 
 const searchSlice = createSlice({
   name: "search",
@@ -39,7 +38,6 @@ export const searchByQuery = (query) => {
             image: item.volumeInfo.imageLinks
          }
       })
-      console.log(data)
       return transformedData;
     };
 

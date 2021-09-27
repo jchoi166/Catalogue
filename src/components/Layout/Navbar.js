@@ -38,7 +38,7 @@ const Navbar = () => {
         <NavLink to="/saved">Your Books</NavLink>
         <NavLink to="/explore">Explore</NavLink>
       </div>
-      <button className={mobileButtonClass} onClick={showLinksHandler}><i class="fas fa-bars"></i></button>
+      <button className={mobileButtonClass} onClick={showLinksHandler}><i className="fas fa-bars"></i></button>
       <div className={maskClass} onClick={hideNavLinksHandler}></div>
       <div className={classes.logo}>
         <img src={logoImage} alt="c/at silhouette" />

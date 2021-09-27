@@ -23,10 +23,10 @@ const SavedItem = (props) => {
    return (
          <div className={classes.item}>
             <div className={classes.imgContainer} onClick={showModalHandler}>
-               {book.image && <img src={book.image.thumbnail} />}
+               {book.image && <img src={book.image.thumbnail} alt={book.title}/>}
                {!book.image && 
                <div className={classes.noImage}>
-                  <i class="fas fa-cat"></i>
+                  <i className="fas fa-cat"></i>
                   <p>Image not available!</p>
                </div>}
             </div>
