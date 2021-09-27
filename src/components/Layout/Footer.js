@@ -17,22 +17,21 @@ const Footer = () => {
                The New York Times.
             </a>
           </p>
-          {/* <p></p> */}
         </div>
         <div className={classes.social}>
           <div className={classes.socialIcon}>
              <a href="https://github.com/jchoi166" target="_blank" rel="noopener noreferrer">
-               <i class="fab fa-github"></i>
+               <i className="fab fa-github"></i>
              </a>
           </div>
           <div className={classes.socialIcon}>
             <a href="https://www.instagram.com/therealjinchoi/?hl=en" target="_blank" rel="noopener noreferrer">
-               <i class="fab fa-instagram"></i>
+               <i className="fab fa-instagram"></i>
             </a>
           </div>
           <div className={classes.socialIcon}>
             <a href="https://www.linkedin.com/in/jin-choi-ab1083167/" target="_blank" rel="noopener noreferrer">
-               <i class="fab fa-linkedin"></i>
+               <i className="fab fa-linkedin"></i>
             </a>
           </div>
         </div>

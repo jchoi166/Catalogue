@@ -15,7 +15,6 @@ const Explore = () => {
       <PageHeader title={"Explore"} caption={'Check out our features on upcoming and noteworty books!'} />
       {isLoaded && <ExploreGrid articles={articles}/>}
       {!isLoaded && <Loader/>}
-      {/* <h1>Remember to add a carousel here!</h1> */}
     </section>
 
   );

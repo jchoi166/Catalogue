@@ -20,7 +20,6 @@ const ExploreThumb = (props) => {
         <img src={imgPrefix + img} alt={article.headline.main}></img>
       </a>
       <p>{article.abstract}</p>
-      {/* time and author */}
       <p className={classes.abstract}>
         {newDate()} &middot;{article.byline.original}
       </p>

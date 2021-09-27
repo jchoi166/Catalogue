@@ -1,7 +1,4 @@
 .footer {
-   /* padding: 5rem;  */
-   /* background-color: rgb(214, 214, 214); */
-   /* color: white;  */
    margin-top: 20px;
 }
 
@@ -34,7 +31,6 @@
    display: flex; 
    justify-content: center;
    padding: 2.5rem 0;
-   /* width: 100%;  */
 }
 
 .socialIcon {

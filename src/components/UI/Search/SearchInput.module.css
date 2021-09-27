@@ -16,7 +16,6 @@
 .inputContainer input {
     border: none;
     background-color: inherit;
-    /* padding: 5px;  */
     color: inherit; 
     margin-left: 1rem;
     width: 100%; 
@@ -24,7 +23,6 @@
     font-weight: 500; 
     font-family: inherit;
     border-bottom: 1px solid transparent;
-    /* transition: border-bottom .1s; */
 }
 
 .inputContainer input:focus {

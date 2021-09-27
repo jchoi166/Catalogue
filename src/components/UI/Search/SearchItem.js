@@ -23,7 +23,7 @@ const SearchItem = (props) => {
         <a href={book.url} target="_blank" rel="noopener noreferrer">
           {!book.image && 
           <div className={classes.noImage}>
-            <i class="fas fa-cat"></i>
+            <i className="fas fa-cat"></i>
             <p>Image not available!</p>
             </div>}
           {book.image && <img src={book.image.smallThumbnail} alt={book.title}/>}

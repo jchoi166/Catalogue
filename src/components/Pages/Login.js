@@ -12,7 +12,6 @@ import Button from "../UI/Button";
 
 const Login = () => {
    const [isLogin, setIsLogin] = useState(true);
-   const [isLoading, setIsLoading] = useState(false);
    
    const history = useHistory()
    const dispatch = useDispatch()
@@ -28,19 +27,15 @@ const Login = () => {
 
    const switchAuthModeHandler = () => {
       setIsLogin((prevState) => !prevState);
-      // console.log("switched")
     };
 
    const submitHandler = (event) => {
       event.preventDefault()
-      console.log("signed in!")
       const enteredEmail = emailInputRef.current.value
       const enteredPassword = passwordInputRef.current.value
 
-      // console.log(enteredEmail, enteredPassword)
       dispatch(userLogin({enteredEmail, enteredPassword, isLogin}))
       setTimeout(function(){
-        console.log('dispatch happened!')
         dispatch(userLogout())
       }, expirationTime)
    }
@@ -64,17 +59,7 @@ const Login = () => {
           />
         </div>
         <div className={classes.actions}>
-          {!isLoading && (
-            <Button type="submit">{isLogin ? "Login" : "Create Account"}</Button>
-          )}
-          {isLoading && <p>Sending request ...</p>}
-          {/* <button
-            type="button"
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </button> */}
+          <Button type="submit">{isLogin ? "Login" : "Create Account"}</Button>
           <Button type="button" onClick={switchAuthModeHandler} className={classes.toggle}>
             {isLogin ? "Create new account" : "Login with existing account"}
           </Button>

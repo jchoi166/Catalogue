@@ -44,8 +44,6 @@ export const fetchSavedBooks = (userId, authToken) => {
 
       const data = await response.json();
       
-      // return transformedData;
-      console.log(data)
       return data
     };
 
@@ -56,7 +54,7 @@ export const fetchSavedBooks = (userId, authToken) => {
         savedBooks: bookData.savedBooks,
         savedIds
       }))
-      // dispatch(searchActions.loadBooks(bookData));
+
     } catch (error) {
 
       console.log(error)
@@ -65,7 +63,6 @@ export const fetchSavedBooks = (userId, authToken) => {
 };
 
 export const sendNewBooks = (booksArray, userId, authToken) => {
-  // return async (dispatch) => {
     console.log('function is being reached')
     const sendData = async () => {
 
@@ -87,7 +84,6 @@ export const sendNewBooks = (booksArray, userId, authToken) => {
 
     try {
       sendData()
-      console.log('book has been saved!')
     } catch (error) {
       console.log(error)
     }

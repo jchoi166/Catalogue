@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { loaderActions } from "./loader-slice";
 
 const exploreSlice = createSlice({
   name: "explore",
@@ -40,4 +39,3 @@ export const exploreActions = exploreSlice.actions;
 
 export default exploreSlice;
 
-// Custom Actions
