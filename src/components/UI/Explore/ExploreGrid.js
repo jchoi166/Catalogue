@@ -14,7 +14,7 @@ const ExploreGrid = (props) => {
       <ExploreCard articleData={articles[0]} articleImg={articles[0].multimedia[0].url} />
       </div>
       <div className={classes.block2}>
-      <ExploreCard articleData={articles[1]} articleImg={articles[1].multimedia[70].url} />
+      <ExploreCard articleData={articles[1]} articleImg={articles[1].multimedia[69].url} />
       </div>
       <div className={classes.block3}>
       <ExploreThumb articleData={articles[2]} articleImg={articles[2].multimedia[19].url} />
